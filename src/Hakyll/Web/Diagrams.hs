@@ -59,7 +59,7 @@ extractDiaDef (CodeBlock (_, tags, _) src) = if "dia-def" `elem` tags then [src]
 extractDiaDef _ = []
 
 diaDir :: FilePath
-diaDir = "diagrams"  -- XXX make this configurable
+diaDir = "images"  -- XXX make this configurable
 
 -- | Given some code with declarations, some attributes, and an
 --   expression to render, render it and return the filename of the
@@ -95,9 +95,7 @@ renderDiagram shouldPad decls expr (_ident, _cls, fields) = do
         return (Right imgFile)
   where
     sz :: SizeSpec V2 Double
-    sz        = mkSizeSpec2D
-                  (lookup "width" fields >>= readMay)
-                  (lookup "height" fields >>= readMay)
+    sz = mkSizeSpec2D (lookup "width" fields >>= readMay) (lookup "height" fields >>= readMay)
     mkFile base = diaDir </> base <.> "png"
 
 renderBlockDiagram :: [String] -> Block -> IO Block
@@ -108,7 +106,7 @@ renderBlockDiagram defs c@(CodeBlock attr@(_, cls, _) src)
         res <- renderDiagram True (src : defs) "dia" attr
         case res of
           Left  err      -> return (CodeBlock attr (src ++ err))
-          Right fileName -> return $ Para [Image [] (fileName, "")]
+          Right fileName -> return $ Para [Image [] (pathSeparator : fileName, "")]
     | otherwise = return c
 renderBlockDiagram _ b = return b
 
