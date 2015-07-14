@@ -1,14 +1,3 @@
--- Custom transformation passes for the @BlogLiterately@ blog-writing
--- tool (<http://hackage.haskell.org/package/BlogLiterately>),
--- allowing inclusion of inline code using the @diagrams@ framework
--- (<http://projects.haskell.org/diagrams>) which are compiled into
--- images.  See "Text.BlogLiterately.Run" for more information.
---{-# LANGUAGE OverloadedStrings #-}
-
--- Note that this package provides an executable, @BlogLiteratelyD@,
--- which compiles embedded diagrams code as well as all the standard
--- transforms provided by BlogLiterately.
------------------------------------------------------------------------------
 {-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE ScopedTypeVariables #-}
 
