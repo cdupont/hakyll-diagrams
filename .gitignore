@@ -1,0 +1,16 @@
+dist
+cabal-dev
+*.o
+*.hi
+*.chi
+*.chs.h
+.virthualenv
+*~
+dist_*
+.hsenv_*
+TAGS
+test/diagrams/*.png
+
+.cabal-sandbox
+cabal.sandbox.config
+.stack*
